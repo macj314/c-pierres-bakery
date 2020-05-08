@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.Linq;
+using System.Collections.Generic;
 using Console = Colorful.Console;
 using Bakery.BakedGoods;
 
@@ -24,27 +26,44 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
       float subTotal = bread.bPrice(bInt) + pastry.pPrice(pInt);
       float saleTax = subTotal * 0.07f, saleTotal = saleTax + subTotal, tip = saleTotal;
       tip = (float)System.Math.Round(saleTotal*.1,2);
-      Console.WriteLine(@"+-------------------------------------+
-|                                     |
-|          Pierre's Bakery            |
-|                                     |
-|            Candy Lane               |
-|         Seattle Washington          |
-|           1-800(BAKED)              |
-|                                     |
-|  Bread                       $" + bread.bPrice(bInt) + @"    |
-|  Pastry(ies)                 $" + pastry.pPrice(pInt) + @"     |
-|                                     |
-|  Subtotal                    $" + subTotal + @"    |
-|                                     |
-|  Tip | 10% $"+tip+ " | 15% $" +tip*.15+ " | 20% $"+tip*.2+@" |             |
-|  TAX                         $" + saleTax + @"  |
-|  TOTAL                       $" + saleTotal + @" |
-|                                     |
-|  Item Count: " + (bInt + pInt) +@"                      |
-|                                     |
-|             THANK YOU!              |
-+-------------------------------------+");
+      Dictionary<string, float> receipt = new Dictionary<string, float>()
+      {
+        {"Pierre's Bakery", 0},
+        {"Bread", bread.bPrice(bInt)},
+        {"Pastry", pastry.pPrice(pInt)},
+        {"Subtotal", subTotal} 
+      };
+      Console.WriteLine("+-------------------------------------+");
+      for (int i = 0; i < receipt.Count; i++)
+      {
+        string a = String.Format("|         {0:C2}", receipt.Keys.ElementAt(i));
+        string b = "@@@@@";
+        Console.WriteLine(a);
+        Console.SetCursorPosition(20,0);
+        Console.Write(b);
+          // receipt.Keys.ElementAt(i), 
+          // receipt[ receipt.Keys.ElementAt(i)]);
+      }
+// |                                     |
+// |          Pierre's Bakery            |
+// |                                     |
+// |            Candy Lane               |
+// |         Seattle Washington          |
+// |           1-800(BAKED)              |
+// |                                     |
+// |  Bread                       $" + bread.bPrice(bInt) + @"    |
+// |  Pastry(ies)                 $" + pastry.pPrice(pInt) + @"     |
+// |                                     |
+// |  Subtotal                    $" + subTotal + @"    |
+// |                                     |
+// |  Tip | 10% $"+tip+ " | 15% $" +tip*.15+ " | 20% $"+tip*.2+@" |             |
+// |  TAX                         $" + saleTax + @"  |
+// |  TOTAL                       $" + saleTotal + @" |
+// |                                     |
+// |  Item Count: " + (bInt + pInt) +@"                      |
+// |                                     |
+// |             THANK YOU!              |
+// +-------------------------------------+");
       Console.WriteLine("1    2   3   4   5   6   7   8   9   10");
       string s = String.Format("First attempt Message: {0:C2}     |", subTotal);
       Console.WriteLine(s.PadLeft(39, ' '));
