@@ -29,21 +29,32 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
       Dictionary<string, float> receipt = new Dictionary<string, float>()
       {
         {"Pierre's Bakery", 0},
+        {"Candy Lane", 0},
+        {"Seattke Washington", 0},
+        {"1-800-BAKED", 0},
         {"Bread", bread.bPrice(bInt)},
         {"Pastry", pastry.pPrice(pInt)},
-        {"Subtotal", subTotal} 
+        {"Subtotal", subTotal},
+        {"Tax", saleTax},
+        {"Tip", tip},
+        {"Total", saleTotal},
+        {"Item Count", (bInt+pInt)},
+        {"THANK YOU", 0}
       };
       Console.WriteLine("+-------------------------------------+");
       for (int i = 0; i < receipt.Count; i++)
       {
-        string a = String.Format("|         {0:C2}", receipt.Keys.ElementAt(i));
-        string b = "@@@@@";
-        Console.WriteLine(a);
-        Console.SetCursorPosition(20,0);
-        Console.Write(b);
-          // receipt.Keys.ElementAt(i), 
-          // receipt[ receipt.Keys.ElementAt(i)]);
+        if (receipt[ receipt.Keys.ElementAt(i)] == 0)
+        {       
+          string a = String.Format("|   {0}", receipt.Keys.ElementAt(i));
+          Console.WriteLine(a);
+        } else
+        {
+          string a = String.Format("|   {0:}        {1:C2}", receipt.Keys.ElementAt(i), receipt[ receipt.Keys.ElementAt(i)]);
+          Console.WriteLine(a);
+        }
       }
+      Console.WriteLine("+-------------------------------------+");
 // |                                     |
 // |          Pierre's Bakery            |
 // |                                     |
@@ -63,11 +74,10 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 // |  Item Count: " + (bInt + pInt) +@"                      |
 // |                                     |
 // |             THANK YOU!              |
-// +-------------------------------------+");
       Console.WriteLine("1    2   3   4   5   6   7   8   9   10");
-      string s = String.Format("First attempt Message: {0:C2}     |", subTotal);
-      Console.WriteLine(s.PadLeft(39, ' '));
-      Console.WriteLine(s);
+      // string s = String.Format("First attempt Message: {0:C2}     |", subTotal);
+      // Console.WriteLine(s.PadLeft(39, ' '));
+      // Console.WriteLine(s);
     }
     
   }
