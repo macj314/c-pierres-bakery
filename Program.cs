@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using Console = Colorful.Console;
 using Bakery.BakedGoods;
 
 namespace Bakery
@@ -12,7 +14,7 @@ namespace Bakery
       Pastry pastry = new Pastry();
       Console.WriteLine(@"Hello! Welcome to Pierre's Bakery. We have a few choice items for sale:
 Bread  $5   Sale: buy 2 get 1 free!
-Pastry $2   Sale: buy 3 for $5");
+Pastry $2   Sale: buy 3 for $5", Color.Green);
       Console.WriteLine("How much bread would you like to purchase?");
       string bString = Console.ReadLine();
       if (int.TryParse(bString, out int bInt))
