@@ -27,20 +27,20 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 
       float subTotal = bread.bPrice() + pastry.pPrice();
       float saleTax = subTotal * 0.07f, saleTotal = saleTax + subTotal, tip = saleTotal;
-      tip = (float)System.Math.Round(saleTotal*.1,2);
+      tip = (float)System.Math.Round(saleTotal*.2f,2);
 
       Dictionary<string, float> receipt = new Dictionary<string, float>()
       {
         {"Pierre's Bakery", 0},
         {"Candy Lane", 0},
-        {"Seattke Washington", 0},
-        {"1-800-BAKED", 0},
+        {"Seattle Washington", 0},
+        {"1-800-BAKE", 0},
         {"Bread", bread.bPrice()},
         {"Pastry", pastry.pPrice()},
         {"Subtotal", subTotal},
         {"Tax", saleTax},
-        {"Tip", tip},
         {"Total", saleTotal},
+        {"Tip", tip},
         {"Item Count", (bFloat+pFloat)},
         {"THANK YOU", 0}
       };
@@ -49,20 +49,16 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
       {
         if (receipt[ receipt.Keys.ElementAt(i)] == 0)
         {       
-          string a = String.Format("|   {0}", receipt.Keys.ElementAt(i));
+          string a = String.Format("|{0,25}             |", receipt.Keys.ElementAt(i));
           Console.WriteLine(a);
         } else
         {
-          string a = String.Format("|   {0:}        {1:C2}", receipt.Keys.ElementAt(i), receipt[ receipt.Keys.ElementAt(i)]);
+          string a = String.Format("|{0,-10}{1,28:C2}|", receipt.Keys.ElementAt(i), receipt[ receipt.Keys.ElementAt(i)]);
           Console.WriteLine(a);
         }
       }
       Console.WriteLine("+-------------------------------------+");
-      Console.WriteLine("1    2   3   4   5   6   7   8   9   10");
-      // string s = String.Format("First attempt Message: {0:C2}     |", subTotal);
-      // Console.WriteLine(s.PadLeft(39, ' '));
-      // Console.WriteLine(s);
-    }
-    
+      Console.WriteLine("1   2   3   4   5   6   7   8   9   10");
+    }  
   }
 }
