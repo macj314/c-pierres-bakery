@@ -36,13 +36,13 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 |                                     |
 |  Subtotal                    $" + subTotal + @"    |
 |                                     |
+|  Tip | 10% $"+tip*.1+ " | 15% $" +tip*.15+ " | 20% $"+tip*.2+@" |             |
 |  TAX                         $" + saleTax + @"  |
-|  TOTAL                       $" + saleTotal + @" | 
-|  Change Due                 3.00    |
+|  TOTAL                       $" + saleTotal + @" |
 |                                     |
-|  Item Count:  5                     |
+|  Item Count: " + (bInt + pInt) +@"                      |
 |                                     |
-|             THANK YOU!         :F_P:|
+|             THANK YOU!              |
 +-------------------------------------+");
     }
   }
