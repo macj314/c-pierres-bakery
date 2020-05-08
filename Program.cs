@@ -45,6 +45,10 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 |                                     |
 |             THANK YOU!              |
 +-------------------------------------+");
+      Console.WriteLine("1    2   3   4   5   6   7   8   9   10");
+      string s = String.Format("First attempt Message: {0}     |", subTotal);
+      Console.WriteLine(s);
     }
+    
   }
 }
