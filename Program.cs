@@ -20,7 +20,9 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
       if (!int.TryParse(bString, out int bInt)){bInt = 0;}
       Console.WriteLine("How many pastries would you like?");
       string pString = Console.ReadLine();
-      if (!int.TryParse(pString, out int pInt)){pInt = 0;} 
+      if (!int.TryParse(pString, out int pInt)){pInt = 0;}
+      int subTotal = bread.bPrice(bInt) + pastry.pPrice(pInt);
+      double saleTax = subTotal * 0.07, saleTotal = saleTax + subTotal, tip = saleTotal;
       Console.WriteLine(@"+-------------------------------------+
 |                                     |
 |          Pierre's Bakery            |
@@ -29,13 +31,13 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 |         Seattle Washington          |
 |           1-800(BAKED)              |
 |                                     |
-|  Bread                              |
-|  Pastry(ies)                        |
+|  Bread                       $" + bread.bPrice(bInt) + @"    |
+|  Pastry(ies)                 $" + pastry.pPrice(pInt) + @"     |
 |                                     |
-|  Subtotal                  12.04    |
+|  Subtotal                    $" + subTotal + @"    |
 |                                     |
-|  TOTAL                     12.04    |
-|  Cash                      15.04    |
+|  TAX                         $" + saleTax + @"  |
+|  TOTAL                       $" + saleTotal + @" | 
 |  Change Due                 3.00    |
 |                                     |
 |  Item Count:  5                     |
