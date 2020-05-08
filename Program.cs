@@ -10,13 +10,13 @@ namespace Bakery
   public class Program
   {
     public static void Main()
-    {      
-      Console.WriteLine("console in pink", Color.Teal);
+    {
       Console.WriteLine(@"Hello! Welcome to Pierre's Bakery. We have a few choice items for sale:
 Bread  $5   Sale: buy 2 get 1 free!
-Pastry $2   Sale: buy 3 for $5", Color.Green);
-      Console.WriteLine("How much bread would you like to purchase?");
+Pastry $2   Sale: buy 3 for $5", Color.Pink);
 
+      //Collect data from user and get prices for entered values
+      Console.WriteLine("How much bread would you like to purchase?");
       string bString = Console.ReadLine();
       if (!float.TryParse(bString, out float bFloat)){bFloat = 0;}
       Bread bread = new Bread(bFloat);
@@ -25,10 +25,12 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
       if (!float.TryParse(pString, out float pFloat)){pFloat = 0;}
       Pastry pastry = new Pastry(pFloat);
 
+      //Convert prices into various floats for display purposes in a console receipt
       float subTotal = bread.bPrice() + pastry.pPrice();
       float saleTax = subTotal * 0.07f, saleTotal = saleTax + subTotal, tip = saleTotal;
       tip = (float)System.Math.Round(saleTotal*.2f,2);
 
+      //Instantiate Dictionary object with strings and numbers to display
       Dictionary<string, float> receipt = new Dictionary<string, float>()
       {
         {"Pierre's Bakery", 0},
@@ -44,6 +46,8 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
         {"Item Count", (bFloat+pFloat)},
         {"THANK YOU", 0}
       };
+      
+      //Loop through Dictionary object and print out elements
       Console.WriteLine("+-------------------------------------+");
       for (int i = 0; i < receipt.Count; i++)
       {
@@ -58,7 +62,6 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
         }
       }
       Console.WriteLine("+-------------------------------------+");
-      Console.WriteLine("1   2   3   4   5   6   7   8   9   10");
     }  
   }
 }
