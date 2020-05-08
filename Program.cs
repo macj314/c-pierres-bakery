@@ -17,12 +17,13 @@ Bread  $5   Sale: buy 2 get 1 free!
 Pastry $2   Sale: buy 3 for $5", Color.Green);
       Console.WriteLine("How much bread would you like to purchase?");
       string bString = Console.ReadLine();
-      if (!int.TryParse(bString, out int bInt)){bInt = 0;}
+      if (!float.TryParse(bString, out float bInt)){bInt = 0;}
       Console.WriteLine("How many pastries would you like?");
       string pString = Console.ReadLine();
-      if (!int.TryParse(pString, out int pInt)){pInt = 0;}
-      int subTotal = bread.bPrice(bInt) + pastry.pPrice(pInt);
-      double saleTax = subTotal * 0.07, saleTotal = saleTax + subTotal, tip = saleTotal;
+      if (!float.TryParse(pString, out float pInt)){pInt = 0;}
+      float subTotal = bread.bPrice(bInt) + pastry.pPrice(pInt);
+      float saleTax = subTotal * 0.07f, saleTotal = saleTax + subTotal, tip = saleTotal;
+      tip = (float)System.Math.Round(saleTotal*.1,2);
       Console.WriteLine(@"+-------------------------------------+
 |                                     |
 |          Pierre's Bakery            |
@@ -36,7 +37,7 @@ Pastry $2   Sale: buy 3 for $5", Color.Green);
 |                                     |
 |  Subtotal                    $" + subTotal + @"    |
 |                                     |
-|  Tip | 10% $"+tip*.1+ " | 15% $" +tip*.15+ " | 20% $"+tip*.2+@" |             |
+|  Tip | 10% $"+tip+ " | 15% $" +tip*.15+ " | 20% $"+tip*.2+@" |             |
 |  TAX                         $" + saleTax + @"  |
 |  TOTAL                       $" + saleTotal + @" |
 |                                     |
