@@ -2,18 +2,29 @@ namespace Bakery.BakedGoods
 {
   public class Bread
   {
-    public float bPrice(float bTotal)
+    public float BreadTotal { get; set; }
+     public Bread(float breadTotal)
     {
-      float bFree = (bTotal / 3) * 5;
-      return (bTotal * 5) - bFree;
+      BreadTotal = breadTotal;
+    }
+
+    public float bPrice()
+    {
+      float bFree = (BreadTotal / 3) * 5;
+      return (BreadTotal * 5) - bFree;
     }
   }
   public class Pastry
   {
-    public float pPrice(float pTotal)
+    public float PastryTotal { get; set; }
+     public Pastry(float pastryTotal)
     {
-      float pFree = (pTotal / 3);
-      return (pTotal * 2) - pFree;
+      PastryTotal = pastryTotal;
+    }
+    public float pPrice()
+    {
+      float pFree = (PastryTotal / 3);
+      return (PastryTotal * 2) - pFree;
     }
   }
 }
